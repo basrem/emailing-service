@@ -79,14 +79,12 @@ class Email {
         const transporter = nodemailer.createTransport({
             host: EMAIL_HOST,
             port: 587,
-            secure: true,
-            ignoreTLS: false,
-            requireTLS: true,
             auth: {
-                credentials: {
-                    user: EMAIL_USERNAME,
-                    pass: EMAIL_PASSWORD,
-                },
+                user: EMAIL_USERNAME,
+                pass: EMAIL_PASSWORD,
+            },
+            tls: {
+                ciphers: "SSLv3",
             },
         });
 
@@ -143,7 +141,6 @@ class Email {
                             server.password,
                             date.toISOString()
                         );
-
                         Email.sendEmail(
                             data.emails,
                             data.name || dashboard.subject,
@@ -162,13 +159,11 @@ class Email {
                     server.username,
                     server.password
                 );
-
                 const pdfDoc = await PDFDocument.load(pdf);
                 const pages = pdfDoc.getPages();
                 pdfDoc.removePage(0);
                 pdfDoc.removePage(pages.length - 2);
                 const modifiedPdfBytes = await pdfDoc.save();
-
                 Email.sendEmail(
                     "socaya@hispuganda.org,jkaruhanga@hispuganda.org,colupot@hispuganda.org,pbehumbiize@hispuganda.org,ssekiwere@hispuganda.org,paul.mbaka@gmail.com",
                     dashboard.subject,
@@ -176,7 +171,6 @@ class Email {
                     `${dashboard.subject}.pdf`,
                     modifiedPdfBytes
                 );
-
                 scheduleJob(dashboard.id, "0 8 * * MON", async () => {
                     const pdf = await Webpage.generatePDF(
                         server.url,
@@ -185,13 +179,11 @@ class Email {
                         server.username,
                         server.password
                     );
-
                     const pdfDoc = await PDFDocument.load(pdf);
                     const pages = pdfDoc.getPages();
                     pdfDoc.removePage(0);
                     pdfDoc.removePage(pages.length - 2);
                     const modifiedPdfBytes = await pdfDoc.save();
-
                     Email.sendEmail(
                         "socaya@hispuganda.org,jkaruhanga@hispuganda.org,colupot@hispuganda.org,pbehumbiize@hispuganda.org,ssekiwere@hispuganda.org,paul.mbaka@gmail.com",
                         dashboard.subject,

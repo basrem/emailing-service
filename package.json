@@ -29,6 +29,7 @@
     },
     "devDependencies": {
         "@types/node-schedule": "^2.1.2",
+        "@types/nodemailer": "^6.4.14",
         "@types/puppeteer": "^7.0.4"
     }
 }
