@@ -4,6 +4,9 @@ const { PDFDocument } = require("pdf-lib");
 const servers = require("./servers.json");
 const { scheduleJob } = require("node-schedule");
 const { default: axios } = require("axios");
+const twilio = require('twilio');
+const fetch = require('node-fetch');
+const FormData = require('form-data'); // Ensure you have this
 
 require("dotenv").config();
 
@@ -74,8 +77,8 @@ class Webpage {
     }
 }
 
-class Email {
-    static sendEmail(to, subject, text, filename, fileContent) {
+class Communication {
+    static async sendEmail(to, subject, text, filename, fileContent) {
         const transporter = nodemailer.createTransport({
             host: EMAIL_HOST,
             port: 587,
@@ -84,31 +87,65 @@ class Email {
                 pass: EMAIL_PASSWORD,
             },
             tls: {
-                ciphers: "SSLv3",
+                ciphers: 'SSLv3',
             },
         });
 
         const mailOptions = {
-            from: `Data Insights<${EMAIL_USERNAME}>`,
+            from: `Data Insights <${EMAIL_USERNAME}>`,
             to: to,
-            name: "DHIS2 Analytics Insights",
             subject: subject,
             text: text,
-            attachments: [
-                {
-                    filename: filename,
-                    content: fileContent,
-                },
-            ],
+            attachments: [{
+                filename: filename,
+                content: fileContent,
+            }],
         };
-        console.log("sending email");
+
+        console.log('Sending email');
         transporter.sendMail(mailOptions, (error, info) => {
             if (error) {
                 return console.log(error);
             }
-
-            console.log("Message sent: %s", info.messageId);
+            console.log('Email sent: %s', info.messageId);
         });
+    }
+
+    static async sendWhatsApp(to, text, fileContent) {
+        const client = twilio(process.env.TWILIO_ACCOUNT_SID, process.env.TWILIO_AUTH_TOKEN);
+
+        const media = await client.messages.create({
+            from: process.env.TWILIO_WHATSAPP_FROM,
+            to: `whatsapp:${to}`,
+            body: text,
+            mediaUrl: `data:application/pdf;base64,${fileContent.toString('base64')}`,
+        });
+
+        console.log('WhatsApp message sent: %s', media.sid);
+    }
+
+    static async sendTelegram(chatId, text, fileContent) {
+        const url = `https://api.telegram.org/bot${process.env.TELEGRAM_BOT_TOKEN}/sendDocument`;
+
+        const formData = new FormData();
+        formData.append('chat_id', chatId);
+        formData.append('caption', text);
+        formData.append('document', Buffer.from(fileContent), {
+            filename: 'report.pdf',
+            contentType: 'application/pdf',
+        });
+
+        const response = await fetch(url, {
+            method: 'POST',
+            body: formData,
+        });
+
+        const result = await response.json();
+        if (result.ok) {
+            console.log('Telegram message sent');
+        } else {
+            console.log('Failed to send Telegram message:', result.description);
+        }
     }
 }
 
@@ -122,7 +159,7 @@ class Email {
                         auth: {
                             username: server.username,
                             password: server.password,
-                        },
+                        }
                     }
                 );
                 const job = scheduleJob(
@@ -141,11 +178,21 @@ class Email {
                             server.password,
                             date.toISOString()
                         );
-                        Email.sendEmail(
+                        await Communication.sendEmail(
                             data.emails,
                             data.name || dashboard.subject,
                             "FYI",
                             `${dashboard.subject}.pdf`,
+                            pdf
+                        );
+                        await Communication.sendWhatsApp(
+                            data.whatsapp,
+                            "FYI",
+                            pdf
+                        );
+                        await Communication.sendTelegram(
+                            process.env.TELEGRAM_CHAT_ID,
+                            "FYI",
                             pdf
                         );
                     }
@@ -164,13 +211,25 @@ class Email {
                 pdfDoc.removePage(0);
                 pdfDoc.removePage(pages.length - 2);
                 const modifiedPdfBytes = await pdfDoc.save();
-                Email.sendEmail(
+
+                await Communication.sendEmail(
                     "socaya@hispuganda.org,jkaruhanga@hispuganda.org,colupot@hispuganda.org,pbehumbiize@hispuganda.org,ssekiwere@hispuganda.org,paul.mbaka@gmail.com",
                     dashboard.subject,
                     "FYI",
                     `${dashboard.subject}.pdf`,
                     modifiedPdfBytes
                 );
+                await Communication.sendWhatsApp(
+                    "whatsapp_number",
+                    "FYI",
+                    modifiedPdfBytes
+                );
+                await Communication.sendTelegram(
+                    process.env.TELEGRAM_CHAT_ID,
+                    "FYI",
+                    modifiedPdfBytes
+                );
+
                 scheduleJob(dashboard.id, "0 8 * * MON", async () => {
                     const pdf = await Webpage.generatePDF(
                         server.url,
@@ -184,11 +243,22 @@ class Email {
                     pdfDoc.removePage(0);
                     pdfDoc.removePage(pages.length - 2);
                     const modifiedPdfBytes = await pdfDoc.save();
-                    Email.sendEmail(
+
+                    await Communication.sendEmail(
                         "socaya@hispuganda.org,jkaruhanga@hispuganda.org,colupot@hispuganda.org,pbehumbiize@hispuganda.org,ssekiwere@hispuganda.org,paul.mbaka@gmail.com",
                         dashboard.subject,
                         "FYI",
                         `${dashboard.subject}.pdf`,
+                        modifiedPdfBytes
+                    );
+                    await Communication.sendWhatsApp(
+                        "whatsapp_number",
+                        "FYI",
+                        modifiedPdfBytes
+                    );
+                    await Communication.sendTelegram(
+                        process.env.TELEGRAM_CHAT_ID,
+                        "FYI",
                         modifiedPdfBytes
                     );
                 });
