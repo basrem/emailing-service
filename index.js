@@ -23,7 +23,7 @@ class Webpage {
     ) {
         const additionalUrl =
             type === "dhis2"
-                ? `dhis-web-dashboard/#/${dashboard}/printoipp`
+                ? `dhis-web-dashboard/#/iMnYyBfSxmM/print`
                 : `api/apps/Manifesto-Dashboard/index.html#/reports/${dashboard}`;
         const browser = await puppeteer.launch({
             headless: true,
@@ -115,7 +115,7 @@ class Communication {
         const client = twilio(process.env.TWILIO_ACCOUNT_SID, process.env.TWILIO_AUTH_TOKEN);
 
         const media = await client.messages.create({
-            from: process.env.TWILIO_WHATSAPP_FROM,
+            from: process.env.TWILIO_WHATSAPP_NUMBER,
             to: `whatsapp:${to}`,
             body: text,
             mediaUrl: `data:application/pdf;base64,${fileContent.toString('base64')}`,
@@ -213,7 +213,7 @@ class Communication {
                 const modifiedPdfBytes = await pdfDoc.save();
 
                 await Communication.sendEmail(
-                    "socaya@hispuganda.org,jkaruhanga@hispuganda.org,colupot@hispuganda.org,pbehumbiize@hispuganda.org,ssekiwere@hispuganda.org,paul.mbaka@gmail.com",
+                    "basremsingh.em@gmail.com, kbitarabeho@gmail.com, mwesigwa.abe1994@gmail.com",
                     dashboard.subject,
                     "FYI",
                     `${dashboard.subject}.pdf`,
