@@ -1,0 +1,67 @@
+2024-09-13T11:06:20.640Z - undefined Scheduled
+2024-09-13T11:06:20.641Z - Base URL: https://play.im.dhis2.org/stable-2-39-6/dhis-web-dashboard/#/iMnYyBfSxmM
+2024-09-13T11:06:20.641Z - Additional URL: dhis-web-dashboard/#/dashboard-id-2
+2024-09-13T11:06:20.641Z - Final URL: https://play.im.dhis2.org/stable-2-39-6/dhis-web-dashboard/#/iMnYyBfSxmMdhis-web-dashboard/#/dashboard-id-2
+2024-09-13T11:06:20.643Z - Error generating PDF: Could not find Chrome (ver. 116.0.5845.96). This can occur if either
+ 1. you did not perform an installation before running the script (e.g. `npm install`) or
+ 2. your cache path is incorrectly configured (which is: /home/gitpod/.cache/puppeteer).
+For (2), check out our guide on configuring puppeteer at https://pptr.dev/guides/configuration.
+2024-09-13T11:19:11.869Z - undefined Scheduled
+2024-09-13T11:19:11.870Z - Base URL: https://play.im.dhis2.org/stable-2-39-6/dhis-web-dashboard/#/iMnYyBfSxmM
+2024-09-13T11:19:11.870Z - Additional URL: dhis-web-dashboard/#/dashboard-id-2
+2024-09-13T11:19:11.870Z - Final URL: https://play.im.dhis2.org/stable-2-39-6/dhis-web-dashboard/#/iMnYyBfSxmMdhis-web-dashboard/#/dashboard-id-2
+2024-09-13T11:19:11.873Z - Error generating PDF: Could not find Chrome (ver. 116.0.5845.96). This can occur if either
+ 1. you did not perform an installation before running the script (e.g. `npm install`) or
+ 2. your cache path is incorrectly configured (which is: /home/gitpod/.cache/puppeteer).
+For (2), check out our guide on configuring puppeteer at https://pptr.dev/guides/configuration.
+2024-09-13T11:31:24.360Z - undefined Scheduled
+2024-09-13T11:31:24.361Z - Base URL: https://play.im.dhis2.org/stable-2-39-6/dhis-web-dashboard/#/iMnYyBfSxmM
+2024-09-13T11:31:24.361Z - Additional URL: dhis-web-dashboard/#/dashboard-id-2
+2024-09-13T11:31:24.361Z - Final URL: https://play.im.dhis2.org/stable-2-39-6/dhis-web-dashboard/#/iMnYyBfSxmMdhis-web-dashboard/#/dashboard-id-2
+2024-09-13T11:31:24.363Z - Error generating PDF: Could not find Chrome (ver. 116.0.5845.96). This can occur if either
+ 1. you did not perform an installation before running the script (e.g. `npm install`) or
+ 2. your cache path is incorrectly configured (which is: /home/gitpod/.cache/puppeteer).
+For (2), check out our guide on configuring puppeteer at https://pptr.dev/guides/configuration.
+2024-09-16T08:20:45.151Z - undefined Scheduled
+2024-09-16T08:20:45.152Z - Base URL: https://play.im.dhis2.org/stable-2-39-6/dhis-web-dashboard/#/iMnYyBfSxmM
+2024-09-16T08:20:45.152Z - Additional URL: dhis-web-dashboard/#/dashboard-id-2
+2024-09-16T08:20:45.152Z - Final URL: https://play.im.dhis2.org/stable-2-39-6/dhis-web-dashboard/#/iMnYyBfSxmMdhis-web-dashboard/#/dashboard-id-2
+2024-09-16T08:20:45.154Z - Error generating PDF: Could not find Chrome (ver. 116.0.5845.96). This can occur if either
+ 1. you did not perform an installation before running the script (e.g. `npm install`) or
+ 2. your cache path is incorrectly configured (which is: /home/gitpod/.cache/puppeteer).
+For (2), check out our guide on configuring puppeteer at https://pptr.dev/guides/configuration.
+2024-09-16T12:15:00.086Z - undefined Scheduled
+2024-09-16T12:15:00.087Z - Base URL: https://play.im.dhis2.org/stable-2-39-6/dhis-web-dashboard/#/iMnYyBfSxmM
+2024-09-16T12:15:00.087Z - Additional URL: dhis-web-dashboard/#/dashboard-id-2
+2024-09-16T12:15:00.087Z - Final URL: https://play.im.dhis2.org/stable-2-39-6/dhis-web-dashboard/#/iMnYyBfSxmMdhis-web-dashboard/#/dashboard-id-2
+2024-09-16T12:15:00.089Z - Error generating PDF: Could not find Chrome (ver. 116.0.5845.96). This can occur if either
+ 1. you did not perform an installation before running the script (e.g. `npm install`) or
+ 2. your cache path is incorrectly configured (which is: /home/gitpod/.cache/puppeteer).
+For (2), check out our guide on configuring puppeteer at https://pptr.dev/guides/configuration.
+2024-09-16T12:29:23.027Z - undefined Scheduled
+2024-09-16T12:29:23.027Z - Base URL: https://play.im.dhis2.org/stable-2-39-6/dhis-web-dashboard/#/iMnYyBfSxmM
+2024-09-16T12:29:23.027Z - Additional URL: dhis-web-dashboard/#/dashboard-id-2
+2024-09-16T12:29:23.027Z - Final URL: https://play.im.dhis2.org/stable-2-39-6/dhis-web-dashboard/#/iMnYyBfSxmMdhis-web-dashboard/#/dashboard-id-2
+2024-09-16T12:29:24.950Z - Logging in
+2024-09-16T12:30:15.202Z - undefined Scheduled
+2024-09-16T12:30:15.203Z - Base URL: https://play.im.dhis2.org/stable-2-39-6/dhis-web-dashboard/#/iMnYyBfSxmM
+2024-09-16T12:30:15.203Z - Additional URL: dhis-web-dashboard/#/dashboard-id-2
+2024-09-16T12:30:15.203Z - Final URL: https://play.im.dhis2.org/stable-2-39-6/dhis-web-dashboard/#/iMnYyBfSxmMdhis-web-dashboard/#/dashboard-id-2
+2024-09-16T12:30:16.779Z - Logging in
+2024-09-16T12:34:01.880Z - undefined Scheduled
+2024-09-16T12:34:01.880Z - Base URL: https://play.im.dhis2.org/stable-2-39-6/dhis-web-dashboard/#/iMnYyBfSxmM
+2024-09-16T12:34:01.880Z - Additional URL: dhis-web-dashboard/#/dashboard-id-2
+2024-09-16T12:34:01.880Z - Final URL: https://play.im.dhis2.org/stable-2-39-6/dhis-web-dashboard/#/iMnYyBfSxmM/dhis-web-dashboard/#/dashboard-id-2
+2024-09-16T12:34:03.384Z - Logging in
+2024-09-16T12:41:40.190Z - undefined Scheduled
+2024-09-16T12:41:40.190Z - Base URL: https://play.im.dhis2.org/stable-2-41-1/dhis-web-dashboard/#/nghVC4wtyzi
+2024-09-16T12:41:40.190Z - Additional URL: dhis-web-dashboard/#/dashboard-id-2
+2024-09-16T12:41:40.190Z - Final URL: https://play.im.dhis2.org/stable-2-41-1/dhis-web-dashboard/#/nghVC4wtyzi/dhis-web-dashboard/#/dashboard-id-2
+2024-09-16T12:41:41.733Z - Error generating PDF: No element found for selector: #j_username
+2024-09-16T12:41:41.769Z - Error generating PDF: No element found for selector: #j_username
+2024-09-16T12:44:06.494Z - undefined Scheduled
+2024-09-16T12:44:06.495Z - Base URL: https://play.im.dhis2.org/stable-2-41-1/dhis-web-dashboard/#/nghVC4wtyzi
+2024-09-16T12:44:06.495Z - Additional URL: dhis-web-dashboard/#/dashboard-id-2
+2024-09-16T12:44:06.495Z - Final URL: https://play.im.dhis2.org/stable-2-41-1/dhis-web-dashboard/#/nghVC4wtyzi/dhis-web-dashboard/#/dashboard-id-2
+2024-09-16T12:44:08.188Z - Error generating PDF: No element found for selector: username
+2024-09-16T12:44:08.221Z - Error generating PDF: No element found for selector: username
