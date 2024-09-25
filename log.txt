@@ -65,3 +65,130 @@ For (2), check out our guide on configuring puppeteer at https://pptr.dev/guides
 2024-09-16T12:44:06.495Z - Final URL: https://play.im.dhis2.org/stable-2-41-1/dhis-web-dashboard/#/nghVC4wtyzi/dhis-web-dashboard/#/dashboard-id-2
 2024-09-16T12:44:08.188Z - Error generating PDF: No element found for selector: username
 2024-09-16T12:44:08.221Z - Error generating PDF: No element found for selector: username
+2024-09-24T06:45:22.573Z - Telegram Token: 7607588298:AAGTjEonFHA9KfXBoeMLcytE3gXz03HaIQk
+2024-09-24T06:45:22.573Z - Telegram Chat ID: 1408012729
+2024-09-24T06:45:22.574Z - Starting Telegram and email PDF process...
+2024-09-24T06:45:22.575Z - Dashboard Type: vs
+2024-09-24T06:45:22.575Z - Processing dashboard ID: dashboard-id-1 Type: vs
+2024-09-24T06:45:22.575Z - Scheduling job for dashboard: dashboard-id-1
+2024-09-24T06:45:22.575Z - Processing dashboard with type vs for Telegram and email.
+2024-09-24T06:45:23.051Z - job_dashboard-id-1_2024-09-24T06:45:23.051Z Scheduled for dashboard: dashboard-id-1
+2024-09-24T06:45:23.051Z - Dashboard Type: dhis2
+2024-09-24T06:45:23.051Z - Processing dashboard ID: dashboard-id-2 Type: dhis2
+2024-09-24T06:45:23.051Z - Scheduling job for dashboard: dashboard-id-2
+2024-09-24T06:45:23.051Z - Processing dashboard with type dhis2 for Telegram and email.
+2024-09-24T06:45:23.400Z - job_dashboard-id-2_2024-09-24T06:45:23.400Z Scheduled for dashboard: dashboard-id-2
+2024-09-24T07:12:54.821Z - Telegram Token: 7607588298:AAGTjEonFHA9KfXBoeMLcytE3gXz03HaIQk
+2024-09-24T07:12:54.822Z - Telegram Chat ID: 1408012729
+2024-09-24T07:12:54.841Z - Starting Telegram and email PDF process...
+2024-09-24T07:12:54.841Z - Dashboard Type: vs
+2024-09-24T07:12:54.841Z - Processing dashboard ID: dashboard-id-1 Type: vs
+2024-09-24T07:12:54.841Z - Scheduling job for dashboard: dashboard-id-1
+2024-09-24T07:12:54.841Z - Processing dashboard with type vs for Telegram and email.
+2024-09-24T07:12:54.881Z - Server is running on port 3000
+2024-09-24T07:12:55.049Z - Error setting webhook: ETELEGRAM: 400 Bad Request: bad webhook: Failed to resolve host: No address associated with hostname
+2024-09-24T07:12:55.343Z - job_dashboard-id-1_2024-09-24T07:12:55.343Z Scheduled for dashboard: dashboard-id-1
+2024-09-24T07:12:55.343Z - Dashboard Type: dhis2
+2024-09-24T07:12:55.343Z - Processing dashboard ID: dashboard-id-2 Type: dhis2
+2024-09-24T07:12:55.344Z - Scheduling job for dashboard: dashboard-id-2
+2024-09-24T07:12:55.344Z - Processing dashboard with type dhis2 for Telegram and email.
+2024-09-24T07:12:55.499Z - job_dashboard-id-2_2024-09-24T07:12:55.499Z Scheduled for dashboard: dashboard-id-2
+2024-09-24T07:14:29.085Z - Telegram Token: 7607588298:AAGTjEonFHA9KfXBoeMLcytE3gXz03HaIQk
+2024-09-24T07:14:29.085Z - Telegram Chat ID: 1408012729
+2024-09-24T07:14:29.099Z - Starting Telegram and email PDF process...
+2024-09-24T07:14:29.099Z - Dashboard Type: vs
+2024-09-24T07:14:29.099Z - Processing dashboard ID: dashboard-id-1 Type: vs
+2024-09-24T07:14:29.099Z - Scheduling job for dashboard: dashboard-id-1
+2024-09-24T07:14:29.099Z - Processing dashboard with type vs for Telegram and email.
+2024-09-24T07:14:29.131Z - Server is running on port 3000
+2024-09-24T07:14:29.294Z - Error setting webhook: ETELEGRAM: 400 Bad Request: bad webhook: Failed to resolve host: No address associated with hostname
+2024-09-24T07:14:29.439Z - job_dashboard-id-1_2024-09-24T07:14:29.439Z Scheduled for dashboard: dashboard-id-1
+2024-09-24T07:14:29.440Z - Dashboard Type: dhis2
+2024-09-24T07:14:29.440Z - Processing dashboard ID: dashboard-id-2 Type: dhis2
+2024-09-24T07:14:29.440Z - Scheduling job for dashboard: dashboard-id-2
+2024-09-24T07:14:29.440Z - Processing dashboard with type dhis2 for Telegram and email.
+2024-09-24T07:14:29.610Z - job_dashboard-id-2_2024-09-24T07:14:29.610Z Scheduled for dashboard: dashboard-id-2
+2024-09-24T07:36:44.132Z - Telegram Token: 7607588298:AAGTjEonFHA9KfXBoeMLcytE3gXz03HaIQk
+2024-09-24T07:36:44.133Z - Telegram Chat ID: 1408012729
+2024-09-24T07:40:03.456Z - Telegram Token: 7607588298:AAGTjEonFHA9KfXBoeMLcytE3gXz03HaIQk
+2024-09-24T07:40:03.457Z - Telegram Chat ID: 1408012729
+2024-09-24T07:40:03.477Z - Starting Telegram and email PDF process...
+2024-09-24T07:40:03.478Z - Dashboard Type: vs
+2024-09-24T07:40:03.478Z - Processing dashboard ID: dashboard-id-1 Type: vs
+2024-09-24T07:40:03.478Z - Scheduling job for dashboard: dashboard-id-1
+2024-09-24T07:40:03.478Z - Processing dashboard with type vs for Telegram and email.
+2024-09-24T07:40:03.517Z - Server is running on port 3000
+2024-09-24T07:40:03.679Z - Error setting webhook: ETELEGRAM: 400 Bad Request: bad webhook: Failed to resolve host: No address associated with hostname
+2024-09-24T07:40:03.804Z - job_dashboard-id-1_2024-09-24T07:40:03.804Z Scheduled for dashboard: dashboard-id-1
+2024-09-24T07:40:03.804Z - Dashboard Type: dhis2
+2024-09-24T07:40:03.804Z - Processing dashboard ID: dashboard-id-2 Type: dhis2
+2024-09-24T07:40:03.804Z - Scheduling job for dashboard: dashboard-id-2
+2024-09-24T07:40:03.804Z - Processing dashboard with type dhis2 for Telegram and email.
+2024-09-24T07:40:03.981Z - job_dashboard-id-2_2024-09-24T07:40:03.981Z Scheduled for dashboard: dashboard-id-2
+2024-09-24T09:06:32.463Z - Telegram Token: 7607588298:AAGTjEonFHA9KfXBoeMLcytE3gXz03HaIQk
+2024-09-24T09:06:32.463Z - Telegram Chat ID: 1408012729
+2024-09-24T09:06:32.484Z - Starting Telegram and email PDF process...
+2024-09-24T09:06:32.484Z - Dashboard Type: vs
+2024-09-24T09:06:32.484Z - Processing dashboard ID: dashboard-id-1 Type: vs
+2024-09-24T09:06:32.484Z - Scheduling job for dashboard: dashboard-id-1
+2024-09-24T09:06:32.484Z - Processing dashboard with type vs for Telegram and email.
+2024-09-24T09:08:56.732Z - Telegram Token: 7607588298:AAGTjEonFHA9KfXBoeMLcytE3gXz03HaIQk
+2024-09-24T09:08:56.732Z - Telegram Chat ID: 1408012729
+2024-09-24T09:08:56.745Z - Starting Telegram and email PDF process...
+2024-09-24T09:08:56.745Z - Dashboard Type: vs
+2024-09-24T09:08:56.745Z - Processing dashboard ID: dashboard-id-1 Type: vs
+2024-09-24T09:08:56.745Z - Scheduling job for dashboard: dashboard-id-1
+2024-09-24T09:08:56.746Z - Processing dashboard with type vs for Telegram and email.
+2024-09-24T09:08:56.784Z - Server is running on port 3000
+2024-09-24T09:08:56.956Z - Error setting webhook: ETELEGRAM: 400 Bad Request: bad webhook: Failed to resolve host: No address associated with hostname
+2024-09-24T09:08:57.175Z - job_dashboard-id-1_2024-09-24T09:08:57.175Z Scheduled for dashboard: dashboard-id-1
+2024-09-24T09:08:57.175Z - Dashboard Type: dhis2
+2024-09-24T09:08:57.175Z - Processing dashboard ID: dashboard-id-2 Type: dhis2
+2024-09-24T09:08:57.175Z - Scheduling job for dashboard: dashboard-id-2
+2024-09-24T09:08:57.175Z - Processing dashboard with type dhis2 for Telegram and email.
+2024-09-24T09:08:57.500Z - job_dashboard-id-2_2024-09-24T09:08:57.500Z Scheduled for dashboard: dashboard-id-2
+2024-09-24T09:26:59.737Z - Telegram Token: 7607588298:AAGTjEonFHA9KfXBoeMLcytE3gXz03HaIQk
+2024-09-24T09:26:59.738Z - Telegram Chat ID: 1408012729
+2024-09-24T09:26:59.758Z - Starting Telegram and email PDF process...
+2024-09-24T09:26:59.758Z - Dashboard Type: vs
+2024-09-24T09:26:59.758Z - Processing dashboard ID: dashboard-id-1 Type: vs
+2024-09-24T09:26:59.758Z - Scheduling job for dashboard: dashboard-id-1
+2024-09-24T09:26:59.758Z - Processing dashboard with type vs for Telegram and email.
+2024-09-24T09:26:59.799Z - Server is running on port 3000
+2024-09-24T09:26:59.973Z - Error setting webhook: ETELEGRAM: 400 Bad Request: bad webhook: Failed to resolve host: No address associated with hostname
+2024-09-24T09:27:00.111Z - job_dashboard-id-1_2024-09-24T09:27:00.111Z Scheduled for dashboard: dashboard-id-1
+2024-09-24T09:27:00.111Z - Dashboard Type: dhis2
+2024-09-24T09:27:00.111Z - Processing dashboard ID: dashboard-id-2 Type: dhis2
+2024-09-24T09:27:00.111Z - Scheduling job for dashboard: dashboard-id-2
+2024-09-24T09:27:00.111Z - Processing dashboard with type dhis2 for Telegram and email.
+2024-09-24T09:27:00.315Z - job_dashboard-id-2_2024-09-24T09:27:00.315Z Scheduled for dashboard: dashboard-id-2
+2024-09-24T09:48:55.928Z - Telegram Token: 7607588298:AAGTjEonFHA9KfXBoeMLcytE3gXz03HaIQk
+2024-09-24T09:48:55.929Z - Telegram Chat ID: 1408012729
+2024-09-24T09:48:55.948Z - Starting Telegram and email PDF process...
+2024-09-24T09:48:55.948Z - Dashboard Type: vs
+2024-09-24T09:48:55.948Z - Processing dashboard ID: dashboard-id-1 Type: vs
+2024-09-24T09:48:55.948Z - Scheduling job for dashboard: dashboard-id-1
+2024-09-24T09:48:55.948Z - Processing dashboard with type vs for Telegram and email.
+2024-09-24T09:48:55.982Z - Server is running on port 3000
+2024-09-24T09:48:56.151Z - Error setting webhook: ETELEGRAM: 400 Bad Request: bad webhook: Failed to resolve host: No address associated with hostname
+2024-09-24T09:48:56.205Z - job_dashboard-id-1_2024-09-24T09:48:56.205Z Scheduled for dashboard: dashboard-id-1
+2024-09-24T09:48:56.205Z - Dashboard Type: dhis2
+2024-09-24T09:48:56.205Z - Processing dashboard ID: dashboard-id-2 Type: dhis2
+2024-09-24T09:48:56.205Z - Scheduling job for dashboard: dashboard-id-2
+2024-09-24T09:48:56.205Z - Processing dashboard with type dhis2 for Telegram and email.
+2024-09-24T09:48:56.330Z - job_dashboard-id-2_2024-09-24T09:48:56.330Z Scheduled for dashboard: dashboard-id-2
+2024-09-24T09:49:51.784Z - Telegram Token: 7607588298:AAGTjEonFHA9KfXBoeMLcytE3gXz03HaIQk
+2024-09-24T09:49:51.785Z - Telegram Chat ID: 1408012729
+2024-09-24T09:49:51.799Z - Starting Telegram and email PDF process...
+2024-09-24T09:49:51.799Z - Dashboard Type: vs
+2024-09-24T09:49:51.799Z - Processing dashboard ID: dashboard-id-1 Type: vs
+2024-09-24T09:49:51.799Z - Scheduling job for dashboard: dashboard-id-1
+2024-09-24T09:49:51.799Z - Processing dashboard with type vs for Telegram and email.
+2024-09-24T09:49:51.833Z - Server is running on port 3000
+2024-09-24T09:49:52.005Z - Error setting webhook: ETELEGRAM: 400 Bad Request: bad webhook: Failed to resolve host: No address associated with hostname
+2024-09-24T09:49:52.073Z - job_dashboard-id-1_2024-09-24T09:49:52.073Z Scheduled for dashboard: dashboard-id-1
+2024-09-24T09:49:52.073Z - Dashboard Type: dhis2
+2024-09-24T09:49:52.073Z - Processing dashboard ID: dashboard-id-2 Type: dhis2
+2024-09-24T09:49:52.073Z - Scheduling job for dashboard: dashboard-id-2
+2024-09-24T09:49:52.073Z - Processing dashboard with type dhis2 for Telegram and email.
+2024-09-24T09:49:52.203Z - job_dashboard-id-2_2024-09-24T09:49:52.203Z Scheduled for dashboard: dashboard-id-2
