@@ -11,22 +11,18 @@ const app = express();
 const bodyParser = require("body-parser");
 const timeout = require("connect-timeout");
 const path = require("path");
+const FormData = require("form-data");
 
 require("dotenv").config();
 
 const logFilePath = "log.txt";
 
-let chatIds = [1408012729, 6051915063]; // Example of multiple chat IDs
-
 // Delay function to avoid Telegram rate limits
 const delay = (ms) => new Promise((resolve) => setTimeout(resolve, ms));
 
-// // Define the path to your PDF file
-// const pdfPath = `${dashboard.id}${date.toISOString()}.pdf`;
-
 // Initialize the Telegram bot
-const telegramToken = process.env.TELEGRAM_TOKEN; //|| // Get the ids and convert them into an array of string
-let envtelegramChatIds = process.env.TELEGRAM_CHAT_IDS; //|| "YOUR_CHAT_ID"; // Set your chat/group ID
+const telegramToken = process.env.TELEGRAM_TOKEN;
+let envtelegramChatIds = process.env.TELEGRAM_CHAT_IDS; // Set your chat/group ID and Get the ids and convert them into an array of string
 
 const telegramChatIds = envtelegramChatIds.split(",");
 
@@ -47,8 +43,6 @@ function logToFile(message) {
 }
 logToFile("Telegram Token: " + telegramToken);
 logToFile("Telegram Chat ID: " + envtelegramChatIds);
-console.log("Telegram Token: " + telegramToken);
-console.log("Telegram Chat ID: " + envtelegramChatIds);
 
 // Start Express server
 const port = process.env.PORT || 3000;
@@ -169,7 +163,7 @@ async function sendEmail(pdfPath, email) {
 
   let mailOptions = {
     from: process.env.EMAIL_USER,
-    to: process.env.EMAIL_RECIPIENTS, //"basremsingh.em@gmail.com",
+    to: process.env.EMAIL_RECIPIENTS,
     //cc: "iwanyana@musph.ac.ug,amutesasira@hispuganda.org",
     // bcc: "kbitarabeho@gmail.com,reaganmeant@gmail.com",
     subject: "Dashboard PDF",
@@ -190,11 +184,11 @@ async function sendEmail(pdfPath, email) {
   }
 }
 
-async function sendPDFToTelegram(chatIds, pdfPath, telegramToken) {
+const sendToTelegram = async (telegramChatIds, pdfPath) => {
   try {
-    logToFile("Attempting to send PDF to Telegram...");
-    logToFile("Telegram Token: " + telegramToken);
-    logToFile("Telegram Chat IDs: " + chatIds.join(", "));
+    logToFile("Attempting to send text and PDF to Telegram...");
+    logToFile("Telegram Token: " + process.env.TELEGRAM_TOKEN);
+    logToFile("Telegram Chat IDs: " + telegramChatIds.join(", "));
     logToFile("PDF Path: " + pdfPath);
 
     // Check if the PDF file exists
@@ -202,99 +196,81 @@ async function sendPDFToTelegram(chatIds, pdfPath, telegramToken) {
       throw new Error(`Error: PDF file at ${pdfPath} does not exist.`);
     }
 
-    // Loop through each chat ID and send the PDF
-    for (const chatId of chatIds) {
-      logToFile(`Sending PDF to chat ID: ${chatId}`);
+    const urlSendMessage = `https://api.telegram.org/bot${process.env.TELEGRAM_TOKEN}/sendMessage`;
+    const urlSendDocument = `https://api.telegram.org/bot${process.env.TELEGRAM_TOKEN}/sendDocument`;
+
+    // Loop through all chat IDs
+    for (const chatId of telegramChatIds) {
+      // Correct variable
+      logToFile(`Processing chat ID: ${chatId.trim()}`); // Log current chat ID
 
       try {
-        const fileStream = fs.createReadStream(pdfPath); // Reopen stream for each send
-        const formData = new FormData();
-        formData.append("chat_id", chatId);
-        formData.append("document", fileStream); // Attach the PDF file
-
-        // Make API call to Telegram to send the PDF
-        const response = await axios.post(
-          `https://api.telegram.org/bot${process.env.TELEGRAM_TOKEN}/sendDocument`,
-          formData,
-          { headers: formData.getHeaders() }
-        );
-
+        // Send text message first
+        const messageParams = {
+          chat_id: chatId.trim(), // Trim the current chat ID
+          text: "This is a test message from your Node.js application.",
+        };
+        const textResponse = await axios.post(urlSendMessage, messageParams);
         logToFile(
-          `Response from Telegram for chat ID ${chatId}: ${JSON.stringify(
-            response.data
+          `Response from Telegram for chat ID ${chatId.trim()}: ${JSON.stringify(
+            textResponse.data
           )}`
         );
       } catch (error) {
         logToFile(
-          `Error sending PDF to chat ID ${chatId}: ${
+          `Error sending text to chat ID ${chatId.trim()}: ${
+            error.response?.data?.description || error.message
+          }`
+        );
+        continue; // Skip to the next chat ID if the text message fails
+      }
+
+      try {
+        // 2. Send PDF file by opening a new file stream for each chat ID
+        logToFile(`Sending PDF to chat ID: ${chatId.trim()}`); // Log current chat ID
+
+        // Create a new stream for each chat ID
+        const formData = new FormData();
+        const fileStream = fs.createReadStream(pdfPath); // Open stream
+        formData.append("chat_id", chatId.trim()); // Trim the current chat ID
+        formData.append("document", fileStream);
+        formData.append("caption", "Here is your dashboard PDF"); // Optional caption
+
+        // Call the Telegram API with the correct token in the URL
+        const pdfResponse = await axios.post(urlSendDocument, formData, {
+          headers: {
+            ...formData.getHeaders(),
+          },
+        });
+
+        logToFile(
+          `Response from Telegram for chat ID ${chatId.trim()}: ${JSON.stringify(
+            pdfResponse.data
+          )}`
+        );
+
+        // Close the stream after sending the file
+        fileStream.close();
+      } catch (error) {
+        logToFile(
+          `Error sending PDF to chat ID ${chatId.trim()}: ${
             error.response?.data?.description || error.message
           }`
         );
       }
-
       // Introduce a delay to respect Telegram's rate limits
       await delay(1000); // Adjust the delay time if needed
     }
 
-    logToFile("PDF sent to all chat IDs successfully.");
+    logToFile("Text and PDF sent to all chat IDs successfully.");
   } catch (error) {
-    logToFile(`Error sending PDF to Telegram: ${error.message}`);
-    logToFile("Full error: " + JSON.stringify(error, null, 2));
+    logToFile(`Error in sendToTelegram: ${error.message}`);
+    logToFile(`Detailed error: ${JSON.stringify(error.response, null, 2)}`);
   }
-}
-
-async function sendTextMessage(chatIds, text) {
-  try {
-    logToFile("Attempting to send text message to Telegram...");
-    logToFile("Telegram Token: " + telegramToken);
-    logToFile("Telegram Chat IDs: " + chatIds.join(", "));
-    logToFile("Text Message: " + text);
-
-    // Iterate over each chat ID
-    for (const chatId of chatIds) {
-      try {
-        logToFile(`Sending message to chat ID: ${chatId}`);
-
-        const response = await bot.sendMessage(chatId.trim(), text); // Trim whitespace from chat IDs
-        logToFile(
-          `Response from Telegram for chat ID ${chatId}: ${JSON.stringify(
-            response
-          )}`
-        );
-      } catch (error) {
-        logToFile(
-          `Error sending message to chat ID ${chatId}: ${error.message}`
-        );
-      }
-
-      // Introduce a delay to avoid hitting Telegram's rate limits
-      await delay(1000); // Adjust this delay as needed
-    }
-
-    logToFile("Text message sent to all chat IDs successfully.");
-  } catch (error) {
-    logToFile(`Error sending text message to Telegram: ${error.message}`);
-  }
-}
-
-// Usage: Pass in the array of chat IDs
-// await sendTextMessage(
-//   telegramChatIds,
-//   "This is a test message from your Node.js application."
-// );
-
-// Replace 'YOUR_CHAT_ID' with the actual chat ID you want to send the message to
-const chatId = 1408012729;
-const text = "This is a test message from your Node.js application.";
+};
 
 (async () => {
   logToFile("Starting Telegram and email PDF process...");
-
-  //Test whether telegram bot can send messages
-  await sendTextMessage(
-    telegramChatIds,
-    "This is a test message from your Node.js application."
-  );
 
   // Iterate through servers and dashboards
   for (const server of servers) {
@@ -304,12 +280,6 @@ const text = "This is a test message from your Node.js application.";
         "Processing dashboard ID: " + dashboard.id + " Type: " + dashboard.type
       );
 
-      // // if (dashboard.type === "vs") {
-      // if (dashboard.type === "vs" || dashboard.type === "dhis2") {
-      //   logToFile("Scheduling job for dashboard: " + dashboard.id);
-      //   logToFile(
-      //     `Processing dashboard with type ${dashboard.type} for Telegram and email.`
-      //   );
       if (dashboard.type === "vs") {
         logToFile("Scheduling job for dashboard: " + dashboard.id);
         logToFile(
@@ -366,19 +336,16 @@ const text = "This is a test message from your Node.js application.";
               }
 
               // Save the PDF to the file system
-              await fs.promises.writeFile(pdfPath, pdf);
 
-              // Using Promise.all with try-catch to handle any errors
-              // try {
-              //   await sendEmail(pdfPath, process.env.EMAIL_RECIPIENTS);
-              //   await sendPDFToTelegram(pdfPath);
-              // } catch (error) {
-              //   logToFile(`Error in concurrent operations: ${error.message}`);
-              // }
+              await fs.promises.writeFile(pdfPath, pdf);
+              logToFile("PDF saved successfully at: " + pdfPath);
+
               try {
+                logToFile("PDF Path: " + pdfPath); // Ensure this prints the correct path
+
                 await Promise.all([
-                  sendPDFToTelegram(telegramChatIds, pdfPath, telegramToken),
-                  sendEmail(pdfPath, process.env.EMAIL_RECIPIENTS),
+                  await sendToTelegram(telegramChatIds, pdfPath),
+                  await sendEmail(pdfPath, process.env.EMAIL_RECIPIENTS),
                 ]);
               } catch (errors) {
                 // Handle individual errors
@@ -429,6 +396,8 @@ const text = "This is a test message from your Node.js application.";
 
           // Save the PDF to the file system
           await fs.promises.writeFile(pdfPath, pdf);
+
+          await sendToTelegram(telegramChatIds, pdfPath);
 
           await sendEmail(pdfPath, process.env.EMAIL_RECIPIENTS); //"basremsingh.em@gmail.com");
         } catch (error) {
